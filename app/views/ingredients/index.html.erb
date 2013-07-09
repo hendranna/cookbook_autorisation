@@ -7,7 +7,9 @@
     <ul>
       <li><%= link_to(ingredient.name, ingredient) %></li>
       <li><%= ingredient.measurement %></li>
-      <li><%= number_to_currency ingredient.cost %></li>
+      <li><%= number_to_currency ingredient.cost %> or
+      	<%= uk_currency(ingredient.cost)%>
+      </li>
       <li><%= image_tag(ingredient.image) %></li>
     </ul>
   </li>

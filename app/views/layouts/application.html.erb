@@ -7,6 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <br>
+   <% if current_user %>
+  <p>hello, <%= current_user.email %></p>
+  <br>
+  <%= link_to 'Logout', session_path(session), method: :delete, data: {confirm: 'Are you sure?'} %>
+  <% else %>
+  <%= link_to ' Please login', login_path %>
+  <%= link_to ' Please register', new_user_path %>
+
+  <%end%>
+  <br>
+
+  <% flash.each do |name, message| %>
+  <div class='flash-message flash-message- <%=name %>'>
+    <%= message %>
+  </div>
+    <%end%>
+
+
   <nav>
     <ul>
       <li><%= link_to('Books', books_path) %></li>
@@ -15,6 +35,10 @@
       <li class='clear'>&nbsp;</li>
     </ul>
   </nav>
+
+
+
+
   <section><%= yield %></section>
 </body>
 </html>
